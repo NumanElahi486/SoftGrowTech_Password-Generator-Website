@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A secure and modern password generator."
+    >
+
+    <title>Password Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+
+        <header class="topbar">
+
+            <a href="#" class="logo">
+                <span class="logo-mark">PG</span>
+
+                <span class="logo-text">
+                    Password Generator
+                </span>
+            </a>
+
+
+            <button
+                type="button"
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle theme"
+                title="Toggle theme"
+            >
+                <span class="theme-icon" id="themeIcon"></span>
+            </button>
+
+        </header>
+
+
+
+        <main class="main-content">
+
+            
+
+            <section class="intro">
+
+                <p class="eyebrow">
+                    SECURITY TOOL
+                </p>
+
+                <h1>
+                    Generate a secure password
+                </h1>
+
+                <p class="intro-text">
+                    Create strong passwords locally in your browser.
+                    Nothing is sent to a server.
+                </p>
+
+            </section>
+
+
+
+            <section class="generator-panel">
+
+
+            
+
+                <div class="field">
+
+                    <div class="field-header">
+
+                        <label
+                            for="passwordOutput"
+                        >
+                            Password
+                        </label>
+
+                        <span
+                            class="status"
+                            id="statusBadge"
+                        >
+                            Ready
+                        </span>
+
+                    </div>
+
+
+                    <div class="password-input">
+
+                        <input
+                            type="text"
+                            id="passwordOutput"
+                            readonly
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="Generate a password"
+                            aria-label="Generated password"
+                        >
+
+
+                        <div class="password-actions">
+
+                            <button
+                                type="button"
+                                class="small-button"
+                                id="visibilityToggle"
+                                aria-label="Hide password"
+                                title="Show or hide password"
+                            >
+                                <span
+                                    class="icon eye-icon"
+                                    aria-hidden="true"
+                                ></span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="small-button"
+                                id="copyBtn"
+                                aria-label="Copy password"
+                                title="Copy password"
+                            >
+                                <span
+                                    class="icon copy-icon"
+                                    aria-hidden="true"
+                                ></span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="copy-message"
+                        id="copyMessage"
+                        aria-live="polite"
+                    ></div>
+
+                </div>
+
+
+                
+
+                <div class="strength">
+
+                    <div class="strength-top">
+
+                        <span>
+                            Password strength
+                        </span>
+
+                        <strong id="strengthText">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="strength-track">
+
+                        <span
+                            id="strengthFill"
+                        ></span>
+
+                    </div>
+
+
+                    <p id="strengthDescription">
+                        Generate a password to see its strength.
+                    </p>
+
+                </div>
+
+
+                <div class="divider"></div>
+
+
+            
+
+                <div class="settings-section">
+
+                    <div class="setting-heading">
+
+                        <div>
+                            <label for="lengthRange">
+                                Password length
+                            </label>
+
+                            <p>
+                                Choose between 8 and 64 characters.
+                            </p>
+                        </div>
+
+
+                        <output
+                            id="lengthValue"
+                            for="lengthRange"
+                        >
+                            16
+                        </output>
+
+                    </div>
+
+
+                    <input
+                        type="range"
+                        id="lengthRange"
+                        min="8"
+                        max="64"
+                        value="16"
+                        step="1"
+                    >
+
+
+                    <div class="range-values">
+                        <span>8</span>
+                        <span>64</span>
+                    </div>
+
+                </div>
+
+
+            
+
+                <div class="settings-section options-section">
+
+                    <div class="setting-heading">
+
+                        <div>
+                            <span class="setting-title">
+                                Character types
+                            </span>
+
+                            <p>
+                                Select the characters allowed in the password.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="options">
+
+                        
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                id="uppercase"
+                                checked
+                            >
+
+                            <span
+                                class="checkbox"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span class="option-text">
+
+                                <span>
+                                    Uppercase letters
+                                </span>
+
+                                <small>
+                                    A-Z
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+            
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                id="numbers"
+                                checked
+                            >
+
+                            <span
+                                class="checkbox"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span class="option-text">
+
+                                <span>
+                                    Numbers
+                                </span>
+
+                                <small>
+                                    0-9
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                    
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                id="symbols"
+                                checked
+                            >
+
+                            <span
+                                class="checkbox"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span class="option-text">
+
+                                <span>
+                                    Symbols
+                                </span>
+
+                                <small>
+                                    ! @ # $
+                                </small>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+        
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        class="generate-button"
+                        id="generateBtn"
+                    >
+                        Generate password
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="clear-button"
+                        id="clearBtn"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+
+            
+
+                <div class="security">
+
+                    <span class="security-mark">
+                        <span></span>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Generated locally
+                        </strong>
+
+                        <p>
+                            Your password is created in your browser
+                            using the Web Crypto API.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+    
+
+        <footer class="footer">
+
+            <span>
+                Password Generator
+            </span>
+
+            <span>
+                Local generation · No data stored
+            </span>
+
+        </footer>
+
+    </div>
+
+
+
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
